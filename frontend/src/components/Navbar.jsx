@@ -16,9 +16,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md" style={{ borderBottom: '3px solid #7bb7c1' }}>
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
         <a href="/#inicio" className="px-1 py-1">
-          <img src={logo} alt="Aloha Turismo" className="h-16 w-auto object-contain" />
+          <img src={logo} alt="Aloha Turismo" className="h-20 md:h-24 w-auto object-contain" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
