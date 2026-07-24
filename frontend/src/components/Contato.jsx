@@ -37,9 +37,9 @@ const infoContato = [
 
 export default function Contato() {
   return (
-    <section id="contato" className="py-24 bg-secondary-100">
+    <section id="contato" className="py-24 bg-neutral-100">
       <div className="max-w-4xl mx-auto px-4">
-        <p className="text-primary-500 uppercase tracking-widest text-sm font-semibold text-center mb-3">
+        <p className="text-secondary-500 uppercase tracking-widest text-sm font-semibold text-center mb-3">
           Entre em Contato
         </p>
         <h2 className="section-title text-gray-900">Fale com a Aloha Turismo</h2>
@@ -49,7 +49,7 @@ export default function Contato() {
         </p>
 
         {/* WhatsApp CTA destaque */}
-        <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center mb-10 shadow-sm">
+        <div className="bg-white border border-neutral-200 rounded-2xl p-8 text-center mb-10 shadow-sm">
           <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
             <MessageCircle size={32} className="text-white" />
           </div>
@@ -71,7 +71,7 @@ export default function Contato() {
         {/* Info cards */}
         <div className="grid sm:grid-cols-2 gap-4">
           {infoContato.map(({ icon: Icon, titulo, valor, href }) => (
-            <div key={titulo} className="flex items-center gap-4 bg-white rounded-xl p-5 border border-secondary-200 shadow-sm">
+            <div key={titulo} className="flex items-center gap-4 bg-white rounded-xl p-5 border border-neutral-200 shadow-sm">
               <div className="w-12 h-12 bg-primary-500 rounded-xl flex items-center justify-center shrink-0">
                 <Icon size={20} className="text-white" />
               </div>

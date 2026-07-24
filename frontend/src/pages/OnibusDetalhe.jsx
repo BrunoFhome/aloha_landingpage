@@ -49,7 +49,7 @@ export default function OnibusDetalhe() {
   return (
     <main className="pt-24 bg-white">
       {/* Cabeçalho escuro com a foto do ônibus */}
-      <section className="py-16" style={{ backgroundColor: '#0b1224' }}>
+      <section className="py-16" style={{ backgroundColor: '#123239' }}>
         <div className="max-w-7xl mx-auto px-4">
           <a
             href="/#frota"
@@ -60,7 +60,7 @@ export default function OnibusDetalhe() {
 
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="inline-block text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide text-gray-900 mb-5" style={{ backgroundColor: '#fbbf24' }}>
+              <span className="inline-block text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide text-white mb-5" style={{ backgroundColor: '#e66c3b' }}>
                 {bus.categoria}
               </span>
               <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-5">
@@ -70,14 +70,14 @@ export default function OnibusDetalhe() {
 
               <div className="flex flex-wrap gap-3">
                 <span className="bg-white/10 border border-white/15 text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                  <Bus size={15} style={{ color: '#fbbf24' }} /> {bus.tipo}
+                  <Bus size={15} style={{ color: '#7bb7c1' }} /> {bus.tipo}
                 </span>
                 <span className="bg-white/10 border border-white/15 text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                  <Users size={15} style={{ color: '#fbbf24' }} /> {bus.poltronas}
+                  <Users size={15} style={{ color: '#7bb7c1' }} /> {bus.poltronas}
                 </span>
                 {bus.wifi && (
                   <span className="bg-white/10 border border-white/15 text-gray-200 text-sm px-4 py-2 rounded-full flex items-center gap-2">
-                    <Wifi size={15} style={{ color: '#fbbf24' }} /> Wi-Fi Starlink
+                    <Wifi size={15} style={{ color: '#7bb7c1' }} /> Wi-Fi Starlink
                   </span>
                 )}
                 {bus.ar && <span className="bg-white/10 border border-white/15 text-gray-200 text-sm px-4 py-2 rounded-full">Ar-condicionado</span>}
@@ -98,7 +98,7 @@ export default function OnibusDetalhe() {
       {/* Galeria do interior */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="uppercase tracking-widest text-sm font-semibold mb-3" style={{ color: '#fbbf24' }}>
+          <p className="uppercase tracking-widest text-sm font-semibold mb-3" style={{ color: '#e66c3b' }}>
             Por dentro
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10">

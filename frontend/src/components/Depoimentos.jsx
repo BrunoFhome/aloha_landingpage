@@ -36,8 +36,8 @@ function Estrelas({ nota }) {
         <Star
           key={i}
           size={16}
-          fill={i < nota ? '#fbbf24' : 'none'}
-          style={{ color: '#fbbf24' }}
+          fill={i < nota ? '#e66c3b' : 'none'}
+          style={{ color: '#e66c3b' }}
         />
       ))}
     </div>
@@ -48,7 +48,7 @@ export default function Depoimentos() {
   return (
     <section id="depoimentos" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4">
-        <p className="uppercase tracking-widest text-sm font-semibold text-center mb-3" style={{ color: '#fbbf24' }}>
+        <p className="uppercase tracking-widest text-sm font-semibold text-center mb-3" style={{ color: '#e66c3b' }}>
           Depoimentos
         </p>
         <h2 className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 leading-tight mb-14 max-w-2xl mx-auto">
@@ -61,7 +61,7 @@ export default function Depoimentos() {
               key={dep.texto}
               className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col"
             >
-              <Quote size={36} fill="#fbbf24" style={{ color: '#fbbf24' }} className="mb-5" />
+              <Quote size={36} fill="#e66c3b" style={{ color: '#e66c3b' }} className="mb-5" />
               <Estrelas nota={dep.nota} />
               <p className="text-gray-700 leading-relaxed mb-6 flex-1">"{dep.texto}"</p>
               <div className="border-t border-gray-100 pt-4">

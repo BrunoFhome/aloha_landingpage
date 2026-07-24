@@ -6,7 +6,7 @@ export default function Frota() {
   return (
     <section id="frota" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4">
-        <p className="uppercase tracking-widest text-sm font-semibold text-center mb-3" style={{ color: '#fbbf24' }}>
+        <p className="uppercase tracking-widest text-sm font-semibold text-center mb-3" style={{ color: '#e66c3b' }}>
           Nossa Frota
         </p>
         <h2 className="section-title text-gray-900">Conheça Nossos Veículos</h2>
@@ -20,7 +20,7 @@ export default function Frota() {
             <div
               key={bus.slug}
               className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border-2"
-              style={{ borderColor: '#fde68a' }}
+              style={{ borderColor: '#bfe0e6' }}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -28,7 +28,7 @@ export default function Frota() {
                   alt={bus.nome}
                   className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide" style={{ backgroundColor: '#fbbf24' }}>
+                <span className="absolute top-3 left-3 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide" style={{ backgroundColor: '#e66c3b' }}>
                   {bus.categoria}
                 </span>
               </div>
@@ -41,8 +41,8 @@ export default function Frota() {
                 </div>
                 <Link
                   to={`/onibus/${bus.slug}`}
-                  className="w-full text-gray-900 font-semibold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2 text-sm hover:brightness-105"
-                  style={{ backgroundColor: '#fbbf24' }}
+                  className="w-full text-white font-semibold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2 text-sm hover:brightness-105"
+                  style={{ backgroundColor: '#e66c3b' }}
                 >
                   Ver Mais <ChevronRight size={16} />
                 </Link>

@@ -37,7 +37,7 @@ export default function Servicos() {
   return (
     <section id="servicos" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <p className="uppercase tracking-widest text-sm font-semibold text-center mb-3" style={{ color: '#fbbf24' }}>
+        <p className="uppercase tracking-widest text-sm font-semibold text-center mb-3" style={{ color: '#e66c3b' }}>
           O Que Oferecemos
         </p>
         <h2 className="section-title text-gray-900">Nossos Serviços</h2>
@@ -51,17 +51,17 @@ export default function Servicos() {
             <div
               key={titulo}
               className="bg-white rounded-2xl p-7 border-2 hover:shadow-lg transition-all duration-300 group"
-              style={{ borderColor: '#fde68a' }}
+              style={{ borderColor: '#bfe0e6' }}
             >
               <div
                 className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
-                style={{ backgroundColor: '#fbbf24' }}
+                style={{ backgroundColor: '#7bb7c1' }}
               >
-                <Icon size={26} className="text-gray-900" />
+                <Icon size={26} className="text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{titulo}</h3>
               <p className="text-gray-500 leading-relaxed">{descricao}</p>
-              <div className="mt-5 h-1 w-10 rounded-full transition-all duration-300 group-hover:w-20" style={{ backgroundColor: '#fbbf24' }} />
+              <div className="mt-5 h-1 w-10 rounded-full transition-all duration-300 group-hover:w-20" style={{ backgroundColor: '#e66c3b' }} />
             </div>
           ))}
         </div>

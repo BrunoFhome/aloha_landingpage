@@ -1,8 +1,8 @@
 import { Shield, Clock, Star, Users } from 'lucide-react'
 
 const stats = [
-  { icon: Clock, value: '19+', label: 'Anos de Experiência' },
-  { icon: Users, value: '5.000+', label: 'Clientes Atendidos' },
+  { icon: Clock, value: '14+', label: 'Anos de Experiência' },
+  { icon: Users, value: 'Centenas', label: 'de Clientes Atendidos' },
   { icon: Shield, value: '100%', label: 'Viagens Seguras' },
   { icon: Star, value: '5★', label: 'Avaliação dos Clientes' },
 ]
@@ -14,13 +14,13 @@ export default function SobreNos() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
 
           {/* Text */}
-          <div className="border-l-4 pl-8" style={{ borderColor: '#fbbf24' }}>
-            <p className="uppercase tracking-widest text-sm font-semibold mb-3" style={{ color: '#fbbf24' }}>
+          <div className="border-l-4 pl-8" style={{ borderColor: '#7bb7c1' }}>
+            <p className="uppercase tracking-widest text-sm font-semibold mb-3" style={{ color: '#e66c3b' }}>
               Sobre Nós
             </p>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-              Mais de 19 anos levando você{' '}
-              <span style={{ color: '#fbbf24' }}>com segurança</span>
+              Mais de 14 anos levando você{' '}
+              <span style={{ color: '#e66c3b' }}>com segurança</span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
               A <strong>Aloha Turismo</strong> é uma empresa especializada em fretamento
@@ -40,9 +40,9 @@ export default function SobreNos() {
               <div
                 key={label}
                 className="rounded-2xl p-6 text-center border-2 hover:shadow-lg transition-all"
-                style={{ borderColor: '#fbbf24', backgroundColor: '#fffbeb' }}
+                style={{ borderColor: '#7bb7c1', backgroundColor: '#eaf3f5' }}
               >
-                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#fbbf24' }}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#7bb7c1' }}>
                   <Icon size={22} className="text-gray-900" />
                 </div>
                 <p className="text-3xl font-extrabold text-gray-900 mb-1">{value}</p>

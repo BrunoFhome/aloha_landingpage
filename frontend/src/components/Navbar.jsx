@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import logo from '../assets/aloha_logo.png'
+import logo from '../assets/LogoHorizontalColorida.png'
 import whatsappIcon from '../assets/whatsapp.png'
 
 const navLinks = [
@@ -15,9 +15,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md" style={{ borderBottom: '3px solid #fbbf24' }}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md" style={{ borderBottom: '3px solid #7bb7c1' }}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/#inicio" className="bg-white rounded-xl px-3 py-2 shadow-sm border border-gray-100">
+        <a href="/#inicio" className="px-1 py-1">
           <img src={logo} alt="Aloha Turismo" className="h-16 w-auto object-contain" />
         </a>
 
@@ -29,7 +29,7 @@ export default function Navbar() {
               className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm relative group"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#fbbf24' }} />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#7bb7c1' }} />
             </a>
           ))}
         </nav>
@@ -50,7 +50,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white border-t-2 px-4 py-4 flex flex-col gap-4" style={{ borderColor: '#fbbf24' }}>
+        <div className="md:hidden bg-white border-t-2 px-4 py-4 flex flex-col gap-4" style={{ borderColor: '#7bb7c1' }}>
           {navLinks.map((link) => (
             <a
               key={link.href}

@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer id="footer">
       {/* Main footer */}
-      <div style={{ backgroundColor: '#0b1224' }}>
+      <div style={{ backgroundColor: '#123239' }}>
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
@@ -54,7 +54,7 @@ export default function Footer() {
 
             {/* Menu */}
             <div>
-              <p className="font-bold mb-6 uppercase tracking-widest text-sm" style={{ color: '#fbbf24' }}>
+              <p className="font-bold mb-6 uppercase tracking-widest text-sm" style={{ color: '#e66c3b' }}>
                 Menu
               </p>
               <ul className="flex flex-col gap-4">
@@ -76,7 +76,7 @@ export default function Footer() {
 
             {/* Contato */}
             <div>
-              <p className="font-bold mb-6 uppercase tracking-widest text-sm" style={{ color: '#fbbf24' }}>
+              <p className="font-bold mb-6 uppercase tracking-widest text-sm" style={{ color: '#e66c3b' }}>
                 Contato
               </p>
               <ul className="flex flex-col gap-5">
@@ -97,7 +97,7 @@ export default function Footer() {
 
             {/* Mapa */}
             <div>
-              <p className="font-bold mb-6 uppercase tracking-widest text-sm" style={{ color: '#fbbf24' }}>
+              <p className="font-bold mb-6 uppercase tracking-widest text-sm" style={{ color: '#e66c3b' }}>
                 Localização
               </p>
               <div className="rounded-xl overflow-hidden border-2 border-gray-600">
@@ -127,7 +127,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="bg-gray-950 py-4 px-4">
+      <div className="py-4 px-4" style={{ backgroundColor: '#0a2226' }}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} MLM Aloha Turismo e Transportes LTDA. Todos os direitos reservados.
