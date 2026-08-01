@@ -2,14 +2,31 @@ import busPremium from '../assets/frota/Branco.png'
 import busComfort from '../assets/frota/bus2.jpeg'
 import busSemiLeito from '../assets/frota/Cinzaa.png'
 
-// Carrega todas as fotos de interior e agrupa pelo prefixo do nome do arquivo
+// Carrega todas as fotos de interior, indexadas pelo nome do arquivo (sem extensão)
 const interiores = import.meta.glob('../assets/interior/*.jpeg', { eager: true, import: 'default' })
 
-const interioresPorPrefixo = (prefixo) =>
-  Object.entries(interiores)
-    .filter(([caminho]) => caminho.split('/').pop().toLowerCase().startsWith(prefixo))
-    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
-    .map(([, imagem]) => imagem)
+const interioresPorNome = {}
+for (const [caminho, imagem] of Object.entries(interiores)) {
+  const nome = caminho.split('/').pop().replace(/\.jpeg$/i, '')
+  interioresPorNome[nome] = imagem
+}
+
+// Cada ônibus é Double Deck (dois andares). O andar de cada foto vem do
+// próprio nome do arquivo (sufixo "_cima" ou "_baixo"); fotos sem esse
+// sufixo (ex: "_banheiro") são tratadas como andar de baixo.
+const galeriaPorPrefixo = (prefixo) => {
+  const nomes = Object.keys(interioresPorNome)
+    .filter((nome) => nome.toLowerCase().startsWith(prefixo.toLowerCase()))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+
+  const inferior = []
+  const superior = []
+  for (const nome of nomes) {
+    const lista = nome.includes('_cima') ? superior : inferior
+    lista.push(interioresPorNome[nome])
+  }
+  return { inferior, superior }
+}
 
 export const frota = [
   {
@@ -24,7 +41,7 @@ export const frota = [
       'a diferença. Perfeito para excursões, turismo e grupos que querem viajar com o ' +
       'máximo de qualidade.',
     imagem: busPremium,
-    interiores: interioresPorPrefixo('branco'),
+    interiores: galeriaPorPrefixo('branco'),
     poltronas: '52 lugares',
     tipo: 'Semi-Leito + Leito (piso inferior)',
     wifi: true, ar: true, banheiro: true, tv: true,
@@ -39,7 +56,7 @@ export const frota = [
       'com poltronas leito espaçosas e reclináveis. Equipado com Wi-Fi a bordo, ' +
       'ar-condicionado e banheiro, garante uma viagem tranquila e confortável para todo o grupo.',
     imagem: busComfort,
-    interiores: interioresPorPrefixo('azul'),
+    interiores: galeriaPorPrefixo('azul'),
     poltronas: '49 lugares',
     tipo: 'Leito',
     wifi: true, ar: true, banheiro: true, tv: true,
@@ -54,7 +71,7 @@ export const frota = [
       'reclináveis com apoio de pernas, dois andares de amplo espaço interno, ar-condicionado ' +
       'e banheiro a bordo. Conforto e segurança para seu grupo chegar bem ao destino.',
     imagem: busSemiLeito,
-    interiores: interioresPorPrefixo('cinza'),
+    interiores: galeriaPorPrefixo('cinza'),
     poltronas: '60 lugares',
     tipo: 'Semi-Leito',
     wifi: true, ar: true, banheiro: true, tv: false,

@@ -1,17 +1,44 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { ArrowLeft, Bus, Users, Wifi, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { buscarPorSlug } from '../data/frota'
 
 function Lightbox({ imagens, indice, onClose, onNavigate }) {
+  const closeButtonRef = useRef(null)
+
+  useEffect(() => {
+    if (indice === null) return
+    closeButtonRef.current?.focus()
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') onNavigate((indice - 1 + imagens.length) % imagens.length)
+      if (e.key === 'ArrowRight') onNavigate((indice + 1) % imagens.length)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [indice, imagens.length, onClose, onNavigate])
+
   if (indice === null) return null
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4" onClick={onClose}>
-      <button onClick={onClose} className="absolute top-5 right-5 text-white/70 hover:text-white transition-colors">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Galeria de fotos do interior"
+    >
+      <button
+        ref={closeButtonRef}
+        onClick={onClose}
+        aria-label="Fechar galeria"
+        className="absolute top-5 right-5 text-white/70 hover:text-white transition-colors"
+      >
         <X size={32} />
       </button>
       <button
         onClick={(e) => { e.stopPropagation(); onNavigate((indice - 1 + imagens.length) % imagens.length) }}
+        aria-label="Foto anterior"
         className="absolute left-3 md:left-8 text-white/70 hover:text-white transition-colors"
       >
         <ChevronLeft size={40} />
@@ -24,6 +51,7 @@ function Lightbox({ imagens, indice, onClose, onNavigate }) {
       />
       <button
         onClick={(e) => { e.stopPropagation(); onNavigate((indice + 1) % imagens.length) }}
+        aria-label="Próxima foto"
         className="absolute right-3 md:right-8 text-white/70 hover:text-white transition-colors"
       >
         <ChevronRight size={40} />
@@ -35,16 +63,28 @@ function Lightbox({ imagens, indice, onClose, onNavigate }) {
   )
 }
 
+const ANDARES = [
+  { chave: 'inferior', label: 'Andar de Baixo' },
+  { chave: 'superior', label: 'Andar de Cima' },
+]
+
 export default function OnibusDetalhe() {
   const { slug } = useParams()
+  return <OnibusDetalheConteudo key={slug} slug={slug} />
+}
+
+function OnibusDetalheConteudo({ slug }) {
   const bus = buscarPorSlug(slug)
+  const [andar, setAndar] = useState('inferior')
   const [fotoAberta, setFotoAberta] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [slug])
+  }, [])
 
   if (!bus) return <Navigate to="/" replace />
+
+  const fotosDoAndar = bus.interiores[andar]
 
   return (
     <main className="pt-24 bg-white">
@@ -101,13 +141,32 @@ export default function OnibusDetalhe() {
           <p className="uppercase tracking-widest text-sm font-semibold mb-3" style={{ color: '#e66c3b' }}>
             Por dentro
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8">
             Interior do {bus.nome}
           </h2>
 
-          {bus.interiores.length > 0 ? (
+          <div className="flex gap-2 mb-8" role="tablist" aria-label="Andar do ônibus">
+            {ANDARES.map(({ chave, label }) => (
+              <button
+                key={chave}
+                role="tab"
+                aria-selected={andar === chave}
+                onClick={() => { setAndar(chave); setFotoAberta(null) }}
+                className="px-5 py-2.5 rounded-full font-semibold text-sm transition-all"
+                style={
+                  andar === chave
+                    ? { backgroundColor: '#e66c3b', color: '#fff' }
+                    : { backgroundColor: '#fff', color: '#374151', border: '1px solid #d1d5db' }
+                }
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {fotosDoAndar.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {bus.interiores.map((foto, i) => (
+              {fotosDoAndar.map((foto, i) => (
                 <button
                   key={i}
                   onClick={() => setFotoAberta(i)}
@@ -115,7 +174,7 @@ export default function OnibusDetalhe() {
                 >
                   <img
                     src={foto}
-                    alt={`Interior do ${bus.nome} — foto ${i + 1}`}
+                    alt={`Interior do ${bus.nome} — ${andar === 'inferior' ? 'andar de baixo' : 'andar de cima'} — foto ${i + 1}`}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -123,13 +182,13 @@ export default function OnibusDetalhe() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500">Fotos do interior em breve.</p>
+            <p className="text-gray-500">Fotos deste andar em breve.</p>
           )}
         </div>
       </section>
 
       <Lightbox
-        imagens={bus.interiores}
+        imagens={fotosDoAndar}
         indice={fotoAberta}
         onClose={() => setFotoAberta(null)}
         onNavigate={setFotoAberta}

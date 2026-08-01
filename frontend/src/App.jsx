@@ -27,11 +27,19 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-white">
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-gray-900 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
+        >
+          Pular para o conteúdo
+        </a>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/onibus/:slug" element={<OnibusDetalhe />} />
-        </Routes>
+        <main id="conteudo">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/onibus/:slug" element={<OnibusDetalhe />} />
+          </Routes>
+        </main>
         <Footer />
         <WhatsAppButton />
       </div>

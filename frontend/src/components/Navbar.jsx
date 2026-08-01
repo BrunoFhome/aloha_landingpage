@@ -44,13 +44,19 @@ export default function Navbar() {
           Solicitar Orçamento
         </a>
 
-        <button className="md:hidden text-gray-700" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="md:hidden text-gray-700"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={menuOpen}
+          aria-controls="menu-mobile"
+        >
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white border-t-2 px-4 py-4 flex flex-col gap-4" style={{ borderColor: '#7bb7c1' }}>
+        <nav id="menu-mobile" aria-label="Menu mobile" className="md:hidden bg-white border-t-2 px-4 py-4 flex flex-col gap-4" style={{ borderColor: '#7bb7c1' }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -70,7 +76,7 @@ export default function Navbar() {
             <img src={whatsappIcon} alt="WhatsApp" className="w-5 h-5" />
             Solicitar Orçamento
           </a>
-        </div>
+        </nav>
       )}
     </header>
   )

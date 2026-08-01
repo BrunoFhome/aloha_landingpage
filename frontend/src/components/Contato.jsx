@@ -18,8 +18,8 @@ const infoContato = [
   {
     icon: Mail,
     titulo: 'E-mail',
-    valor: 'contato@alohaturismo.com.br',
-    href: 'mailto:contato@alohaturismo.com.br',
+    valor: 'alohaturismo@hotmail.com',
+    href: 'mailto:alohaturismo@hotmail.com',
   },
   {
     icon: MapPin,
@@ -76,7 +76,7 @@ export default function Contato() {
                 <Icon size={20} className="text-white" />
               </div>
               <div>
-                <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-0.5">{titulo}</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-0.5">{titulo}</p>
                 {href ? (
                   <a
                     href={href}

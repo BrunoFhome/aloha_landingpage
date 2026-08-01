@@ -61,6 +61,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <a
         href="#sobre"
+        aria-label="Rolar para a próxima seção"
         className="absolute bottom-3 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition-colors animate-bounce"
       >
         <ChevronDown size={24} />
